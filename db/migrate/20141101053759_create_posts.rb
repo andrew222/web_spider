@@ -6,6 +6,7 @@ class CreatePosts < ActiveRecord::Migration
       t.integer :author_id
       t.string :post_link
       t.integer :article_id
+      t.integer :forum_id
 
       t.timestamps
     end

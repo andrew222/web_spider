@@ -8,6 +8,7 @@ class CreateArticles < ActiveRecord::Migration
       t.datetime :last_reply_at
       t.integer :post_count
       t.integer :view_count
+      t.integer :forum_id
 
       t.timestamps
     end
