@@ -1,0 +1,18 @@
+%p#notice= notice
+
+%p
+  %b Title:
+  = @site.title
+%p
+  %b Url:
+  = @site.url
+%p
+  %b Finished:
+  = @site.finished
+%p
+  %b Message:
+  = @site.message
+
+= link_to 'Edit', edit_site_path(@site)
+\|
+= link_to 'Back', sites_path
