@@ -20,7 +20,6 @@ gem 'coffee-rails', '~> 4.0.0'
 
 gem 'haml-rails'
 
-gem 'pry-debugger'
 gem 'nokogiri'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
@@ -33,6 +32,7 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 
 # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
 group :development do
+  gem 'pry-debugger'
   gem 'pry-rails'
   gem 'pry-doc'
   gem 'spring'
@@ -40,6 +40,8 @@ end
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
+
+gem 'resque-scheduler', '~> 2.5.5', :require => 'resque_scheduler'
 
 # Use unicorn as the app server
 # gem 'unicorn'

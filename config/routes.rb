@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   #   resources :products
 
   # Example resource route with options:
+  mount SecureResqueServer.new, :at => '/resque'
   #   resources :products do
   #     member do
   #       get 'short'
