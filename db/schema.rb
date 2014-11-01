@@ -11,7 +11,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141029145752) do
+ActiveRecord::Schema.define(version: 20141101063810) do
+
+  create_table "articles", force: true do |t|
+    t.string   "title"
+    t.string   "url"
+    t.integer  "author_id"
+    t.datetime "failed_at"
+    t.datetime "last_reply_at"
+    t.integer  "post_count"
+    t.integer  "view_count"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "posts", force: true do |t|
+    t.text     "content"
+    t.datetime "posted_at"
+    t.integer  "author_id"
+    t.string   "post_link"
+    t.integer  "article_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "sites", force: true do |t|
     t.string   "title"
