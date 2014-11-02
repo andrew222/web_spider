@@ -1,0 +1,6 @@
+tieba_baidu:
+  cron: 0 */2 * * *
+  class: BaiduTiebaJob
+  queue: baidu_tieba_job
+  args: "All articles"
+  description: Baidu tieba schedule

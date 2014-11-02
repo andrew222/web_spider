@@ -7,6 +7,12 @@ class BaiduTiebaJob
 
   def self.perform(article_id)
     spider = BaiduTieba::Tieba.new
-    spider.spider_tieba(article_id)
+    if article_id == "All articles"
+      Article.all.each do |a|
+        spider.spider_tieba(a.id)
+      end
+    else
+      spider.spider_tieba(article_id)
+    end
   end
 end

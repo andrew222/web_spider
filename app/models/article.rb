@@ -9,8 +9,6 @@ class Article < ActiveRecord::Base
 
   private
     def add_spider_to_resque
-      puts "**************88"
-      puts self.id
       Resque.enqueue(BaiduTiebaJob, self.id)
     end
 end
