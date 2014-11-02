@@ -26,7 +26,7 @@ module BaiduTieba
         end
         doc = Nokogiri::HTML(open(url))
         post_elems = doc.xpath("//div[contains(@class, 'l_post_bright')]")
-        post_elems.each do |post_elem|
+        post_elems.reverse.each do |post_elem|
           author_elem = post_elem.at_xpath(".//ul[@class='p_author']//a[starts-with(@class, 'p_author_name')]")
           author_link = author_elem.attribute("href").value
           author_name = author_elem.content.strip
@@ -46,6 +46,9 @@ module BaiduTieba
             post_content_elem = post_elem.at_xpath(".//div[starts-with(@id, 'post_content_')]//text()")
             post_content = post_content_elem.content.strip unless post_content_elem.nil?
             post = article.posts.find_or_create_by(content: post_content, posted_at: posted_at)
+            # stop to spider the old posts
+            return unless post.new_record?
+
             post.post_link = url
             post.author_id = author.id
             post.save
