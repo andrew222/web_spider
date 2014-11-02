@@ -6,6 +6,7 @@ class BaiduTiebaJob
   @queue = :baidu_tieba_job
 
   def self.perform(article_id)
+    p "*****************begin job"
     spider = BaiduTieba::Tieba.new
     if article_id == "All articles"
       Article.all.each do |a|

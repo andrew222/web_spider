@@ -46,6 +46,9 @@ module BaiduTieba
             post_content_elem = post_elem.at_xpath(".//div[starts-with(@id, 'post_content_')]//text()")
             post_content = post_content_elem.content.strip unless post_content_elem.nil?
             post = article.posts.find_or_create_by(content: post_content, posted_at: posted_at)
+            p "***************************"
+            p url
+            p post.new_record?
             # stop to spider the old posts
             return unless post.new_record?
 
