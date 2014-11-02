@@ -9,7 +9,7 @@ namespace :resque do
     require 'resque/scheduler'
 
     # you probably already have this somewhere
-    Resque.redis = $redis
+    #Resque.redis = $redis
     
     # ENV['QUEUE'] = '*'
 

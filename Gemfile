@@ -43,7 +43,8 @@ end
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
-gem 'resque-scheduler', '~> 2.5.5', :require => 'resque_scheduler'
+gem 'resque-scheduler', :require => 'resque_scheduler'
+#gem 'resque', :require => "resque/server"
 
 # Use unicorn as the app server
 # gem 'unicorn'
