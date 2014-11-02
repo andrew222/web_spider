@@ -1,0 +1,5 @@
+new post
+%h2= @post.post_link
+%div= @post.content
+%span= @post.posted_at
+%span= link_to @post.author.name, @post.author.link
