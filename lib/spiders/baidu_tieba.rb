@@ -56,7 +56,7 @@ module BaiduTieba
             post.post_link = url
             post.author_id = author.id
             post.save
-            new_posts << {title: article.title, author_name: author.name, author_link: author.link, post_content: post.content, post_link: post.post_link, posted_at: post.posted_at}
+            new_posts << {title: article.title, author_name: author.name, author_link: author.link, post_content: post.content, post_link: post.post_link, posted_at: post.posted_at.localtime}
           end
         end
         page_elem = doc.at_xpath("//a[text()='上一页']")

@@ -1,6 +1,15 @@
-new posts list
-- @posts_arr.each do |post_hash|
-  -#%h2= link_to(post_hash["title"], post_hash["post_link"])
-  %div= post_hash[:post_content]
-  %span= post_hash[:posted_at]
-  -#%span= link_to post_hash["author_name"], post_hash["author_link"]
+%h4 新回复清单
+%table
+  %tr
+    %th 内容
+    %th 回复链接
+    %th 回复时间
+    %th 回复用户名
+    %th 回复用户资料
+  - @posts_arr.each do |post_hash|
+    %tr
+      %td= post_hash[:post_content]
+      %td= post_hash[:post_link]
+      %td= post_hash[:posted_at]
+      %td= post_hash[:author_name]
+      %td= post_hash[:author_link]
