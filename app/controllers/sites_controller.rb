@@ -28,7 +28,6 @@ class SitesController < ApplicationController
   # POST /sites.json
   def create
     @site = Site.new(site_params)
-    pry.debugger
     doc = Nokogiri::HTML(open("http://tieba.baidu.com/p/3379493759"))
     post_elems = doc.xpath("//div[starts-with(@class, 'l_post_bright')]")
     puts "*************************"

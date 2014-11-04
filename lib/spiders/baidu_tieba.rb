@@ -13,11 +13,12 @@ module BaiduTieba
         else
           page_url = page_elem.attribute("href").value
         end
-        fetch_post_and_author_info(article, page_url)
+        posts = fetch_post_and_author_info(article, page_url)
       end
     end
 
     def fetch_post_and_author_info(article, page_url)
+      new_posts = []
       until page_url.nil?
         unless page_url.match(/\?pn\=\d{1,}/).nil?
           url = generate_page_url(article.url, page_url)
@@ -50,11 +51,12 @@ module BaiduTieba
             p url
             p post.new_record?
             # stop to spider the old posts
-            return unless post.new_record?
+            return new_posts unless post.new_record?
 
             post.post_link = url
             post.author_id = author.id
             post.save
+            new_posts << {title: article.title, author_name: author.name, author_link: author.link, post_content: post.content, post_link: post.post_link, posted_at: post.posted_at}
           end
         end
         page_elem = doc.at_xpath("//a[text()='上一页']")
@@ -64,6 +66,8 @@ module BaiduTieba
           page_url = page_elem.attribute("href").value
         end
       end
+      
+      new_posts
     end
     
     def generate_page_url(url, path)

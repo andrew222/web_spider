@@ -1,5 +1,6 @@
-new post
-%h2= @post.post_link
-%div= @post.content
-%span= @post.posted_at
-%span= link_to @post.author.name, @post.author.link
+new posts list
+- @posts_arr.each do |post_hash|
+  -#%h2= link_to(post_hash["title"], post_hash["post_link"])
+  %div= post_hash[:post_content]
+  %span= post_hash[:posted_at]
+  -#%span= link_to post_hash["author_name"], post_hash["author_link"]

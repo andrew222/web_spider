@@ -7,13 +7,18 @@ class BaiduTiebaJob
 
   def self.perform(article_id)
     p "*****************begin job"
+    all_new_posts = []
     spider = BaiduTieba::Tieba.new
     if article_id == "All articles"
       Article.all.each do |a|
-        spider.spider_tieba(a.id)
+        all_new_posts << spider.spider_tieba(a.id)
       end
     else
-      spider.spider_tieba(article_id)
+      all_new_posts << spider.spider_tieba(article_id)
+    end
+    all_new_posts.flatten!
+    if all_new_posts.size > 0
+      Notifier.new_post_email(all_new_posts).deliver
     end
   end
 end
